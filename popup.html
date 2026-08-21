@@ -2,25 +2,49 @@
 <html>
 <head>
   <style>
-    body { width: 400px; padding: 12px; font-family: system-ui; font-size: 14px; }
-    button { width: 100%; padding: 10px; margin: 6px 0; cursor: pointer; border: none; border-radius: 4px; font-size: 14px; font-weight: 600; }
-    #export-btn { background: #1a73e8; color: #fff; }
-    #import-btn { background: #34a853; color: #fff; }
-    #clear-btn { background: #ea4335; color: #fff; }
+    body { width: 420px; padding: 12px; font-family: system-ui; font-size: 13px; }
+    button { width: 100%; padding: 10px; margin: 4px 0; cursor: pointer; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; }
+    .export { background: #1a73e8; color: #fff; }
+    .import { background: #34a853; color: #fff; }
+    .danger { background: #ea4335; color: #fff; }
     button:hover { opacity: 0.9; }
-    textarea { width: 100%; height: 200px; margin: 6px 0; font-family: monospace; font-size: 11px; resize: vertical; box-sizing: border-box; }
-    #status { margin-top: 8px; padding: 6px; border-radius: 4px; display: none; font-size: 12px; }
+    textarea { width: 100%; height: 180px; margin: 6px 0; font-family: monospace; font-size: 10px; resize: vertical; box-sizing: border-box; }
+    #status { margin-top: 6px; padding: 6px; border-radius: 4px; display: none; font-size: 11px; }
     #status.success { display: block; background: #e6f4ea; color: #137333; }
     #status.error { display: block; background: #fce8e6; color: #c5221f; }
-    h3 { margin: 0 0 8px 0; }
+    h3 { margin: 0 0 6px 0; font-size: 15px; }
+    .section { margin: 8px 0; padding: 8px; background: #f8f9fa; border-radius: 4px; }
+    .section h4 { margin: 0 0 6px 0; font-size: 12px; color: #555; }
+    .note { font-size: 11px; color: #666; margin: 4px 0; }
   </style>
 </head>
 <body>
-  <h3>🍪 Cookies Transfer All</h3>
-  <button id="export-btn">Export ALL Cookies</button>
-  <textarea id="data" placeholder="JSON cookies akan muncul di sini..."></textarea>
-  <button id="import-btn">Import Cookies</button>
-  <button id="clear-btn">Clear ALL Cookies</button>
+  <h3>🍪 Cookies Transfer All v2</h3>
+
+  <div class="section">
+    <h4>ALL COOKIES (semua domain)</h4>
+    <button id="export-cookies" class="export">Export All Cookies</button>
+    <button id="import-cookies" class="import">Import Cookies</button>
+  </div>
+
+  <div class="section">
+    <h4>CURRENT TAB: LocalStorage + IndexedDB</h4>
+    <p class="note">Buka tab target (misal web.whatsapp.com) lalu klik:</p>
+    <button id="export-storage" class="export">Export Storage (tab aktif)</button>
+    <button id="import-storage" class="import">Import Storage (tab aktif)</button>
+  </div>
+
+  <div class="section">
+    <h4>FULL EXPORT (Cookies + Storage tab aktif)</h4>
+    <button id="export-all" class="export">Export ALL</button>
+    <button id="import-all" class="import">Import ALL</button>
+  </div>
+
+  <textarea id="data" placeholder="Data JSON akan muncul di sini..."></textarea>
+
+  <button id="clear-cookies" class="danger">Clear All Cookies</button>
+  <button id="clear-storage" class="danger">Clear Storage (tab aktif)</button>
+
   <div id="status"></div>
   <script src="popup.js"></script>
 </body>
